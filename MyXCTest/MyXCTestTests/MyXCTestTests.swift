@@ -10,7 +10,7 @@ import XCTest
 @testable import MyXCTest
 
 class MyXCTestTests: XCTestCase {
-
+    let taskManager = TaskManager.shared
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -22,6 +22,11 @@ class MyXCTestTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertEqual(taskManager.isInitialized, false)
+        
+        XCTAssertEqual(taskManager.initialize(), true)
+
+        XCTAssertEqual(taskManager.isInitialized, true)
     }
 
     func testPerformanceExample() {
